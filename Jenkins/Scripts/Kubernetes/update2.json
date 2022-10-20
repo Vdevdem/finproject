@@ -1,0 +1,17 @@
+{
+    "Comment": "Update record to reflect new DNSName of fresh deploy",
+    "Changes": [
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "AliasTarget": {
+              "HostedZoneId": "ZHURV8PSTC4K8", 
+              "EvaluateTargetHealth": false, 
+              "DNSName": "dualstack.aa865c817a8334a27bd98c1c6e93442d-813763534.eu-west-2.elb.amazonaws.com"
+          }, 
+          "Type": "A", 
+          "Name": "qapetclinic.xyz."
+        }
+      }
+    ]
+  }

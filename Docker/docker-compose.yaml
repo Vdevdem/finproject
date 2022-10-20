@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  backend:
+    image: vdevdem/backend:latest
+    build: ./spring-petclinic-rest
+    ports:
+      - target: 9966
+        published: 9966
+        protocol: tcp
+  frontend:
+    image: vdevdem/frontend:latest
+    build: ./spring-petclinic-angular
+    ports:
+      - target: 8082
+        published: 8082
+        protocol: tcp

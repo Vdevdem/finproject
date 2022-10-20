@@ -1,0 +1,17 @@
+{
+    "Comment": "Update record to reflect new DNSName of fresh deploy",
+    "Changes": [
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "AliasTarget": {
+              "HostedZoneId": "$HOST_ID2", 
+              "EvaluateTargetHealth": false, 
+              "DNSName": "dualstack.$LOAD_BALANCER"
+          }, 
+          "Type": "A", 
+          "Name": "qapetclinic.xyz."
+        }
+      }
+    ]
+  }

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: petclinic-demo
+  name: petclinic-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petclinic-demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: petclinic-demo
+    spec:
+      containers:
+      - image: codevid/backend
+        name: petclinic-demo
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+          - containerPort: 9966
+        env:
+        - name: RDS_ENDPOINT
+          value: $RDS_ENDPOINT
+        - name: RDS_USERNAME
+          value: $RDS_USERNAME
+        - name: RDS_PASSWORD
+          value: $RDS_PASSWORD
+      
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: petclinic-demo-service
+spec:
+  selector:
+    app: petclinic-demo
+  ports:
+    - protocol: TCP
+      port: 9966
+      targetPort: 9966

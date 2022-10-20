@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: petclinic-demo-angular
+  name: petclinic-demo-angular
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petclinic-demo-angular
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: petclinic-demo-angular
+    spec:
+      containers:
+      - image: codevid/frontend
+        name: petclinic-demo-angular
+        resources: {}
+        imagePullPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: petclinic-demo-angular
+  name: petclinic-demo-angular
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+  selector:
+    app: petclinic-demo-angular
+  type: LoadBalancer
+status:
+  loadBalancer: {}
